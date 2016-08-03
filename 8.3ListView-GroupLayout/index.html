@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>_8.3ListView_GroupLayout</title>
+    <link href="lib/winjs-4.0.1/css/ui-light.css" rel="stylesheet" />
+    <script src="lib/winjs-4.0.1/js/base.js"></script>
+    <script src="lib/winjs-4.0.1/js/ui.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+</head>
+<body class="win-type-body">
+    <!-- listView的模板  -->
+    <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+        <div class="smallListIconTextItem">
+            <img src="#" class="smallListIconTextItem-Image" data-win-bind="src: picture" />
+            <div class="smallListIconTextItem-Detail">
+                <h4 class="win-h4" data-win-bind="textContent: title"></h4>
+                <h6 class="win-h6" data-win-bind="textContent: text"></h6>
+            </div>
+        </div>
+    </div>
+
+    <!--listView的group的header模板-->
+    <div class="listLayoutTopHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="listLayoutTopHeaderTemplateRoot">
+            <div data-win-bind="innerHTML: title"></div>
+        </div>
+    </div>
+
+    
+    <!--这边listView的绑定需要指定两个数据源itemDataSource和groupDataSource（其实是一个数据）-->
+    <div id="listView"
+         class="win-selectionstylefilled"
+         data-win-control="WinJS.UI.ListView"
+         data-win-options="{
+            itemDataSource: Sample.ListView.data.dataSource,
+            itemTemplate: select('.smallListIconTextTemplate'),
+            groupDataSource: Sample.ListView.data.groups.dataSource,
+            groupHeaderTemplate: select('.listLayoutTopHeaderTemplate'),
+            selectionMode: 'none',
+            tapBehavior: 'none',
+            layout: { type: WinJS.UI.ListLayout, groupHeaderPosition: 'top'}
+        }">
+    </div>
+
+
+</body>
+</html>
